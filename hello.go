@@ -1,7 +1,6 @@
 package main
 
 import "fmt"
-import "./iteration"
 
 const helloPrefix = "Hello, "
 
@@ -18,7 +17,19 @@ func Add(x, y int) int {
 	return x + y
 }
 
+func Sum(numbers [5]int) int {
+	sum := 0
+
+	for _, number := range numbers {
+		sum += number
+	}
+
+	return sum
+}
+
+
 func main() {
-	fmt.Printls(iteration.Repeat())
+	fmt.Println(Sum([5]int{4,3,6,5,9}))
+	fmt.Println(Add(5, 7))
 	fmt.Println(Hello("Ehsan and Zara"))
 }

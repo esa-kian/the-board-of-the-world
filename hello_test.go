@@ -33,10 +33,26 @@ func TestAdder(t *testing.T) {
 	}
 }
 
+func TestSum(t *testing.T) {
+	got := Sum([5]int{1, 2, 3, 4, 5})
+
+	want := 15
+
+	assertCorrectMessageInt(t, got, want)
+}
+
 func assertCorrectMessage(t testing.TB, got, want string) {
 	t.Helper()
 
 	if got != want {
 		t.Errorf("got %q want %q", got, want)
+	}
+}
+
+func assertCorrectMessageInt(t testing.TB, got, want int) {
+	t.Helper()
+
+	if got != want {
+		t.Errorf("got %d want %d", got, want)
 	}
 }

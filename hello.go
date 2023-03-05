@@ -27,8 +27,12 @@ func Sum(numbers [5]int) int {
 	return sum
 }
 
+func SumAll(numbersToSum ...[]int) []int {
+	return nil
+}
 
 func main() {
+	fmt.Println(nil)
 	fmt.Println(Sum([5]int{4,3,6,5,9}))
 	fmt.Println(Add(5, 7))
 	fmt.Println(Hello("Ehsan and Zara"))

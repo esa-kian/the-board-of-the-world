@@ -2,6 +2,8 @@ package main
 
 import "testing"
 import "fmt"
+import "reflect"
+
 
 func TestHello(t *testing.T) {
 	t.Run("saying hello to people", func(t *testing.T) {
@@ -34,7 +36,7 @@ func TestAdder(t *testing.T) {
 }
 
 func TestSum(t *testing.T) {
-	got := Sum([5]int{1, 2, 3, 4, 5})
+	got := Sum([]int{1, 2, 3, 4, 5})
 
 	want := 15
 
@@ -44,10 +46,42 @@ func TestSum(t *testing.T) {
 func TestSumAll(t *testing.T) {
 	got := SumAll([]int{1, 2}, []int{0, 9})
 	want := []int{3, 9}
-
-	if got != want {
+	//want := "Boob"
+	if !reflect.DeepEqual(got, want) {
 		t.Errorf("got %v want %v", got, want)
 	}
+}
+
+func TestPerimeter(t *testing.T) {
+	rectangle := Rectangle{10.0, 10.0}
+	got := Perimeter(rectangle)
+	want := 40.0
+
+	if got != want {
+		t.Errorf("got %.2f want %.2f", got, want)
+	}
+}
+
+func TestArea(t *testing.T) {
+	areaTests := []struct {
+		shape Shape
+		want float64
+	}{
+		{Rectangle{12, 6}, 72.0},
+		{Circle{10}, 314.1592653589793},
+		{Triangle{12, 6}, 36.0},
+	}
+
+	for _, tt := range areaTests {
+		got := tt.shape.Area()
+	
+
+		if got != tt.want {
+			t.Errorf("got %.2f want %.2f", got, tt.want)
+
+		}
+	}
+
 }
 
 func assertCorrectMessage(t testing.TB, got, want string) {

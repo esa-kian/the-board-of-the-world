@@ -5,6 +5,32 @@ import "fmt"
 import "reflect"
 
 
+func TestSearch(t *testing.T) {
+	dictionary := Dictionary{"test": "it is just a test"}
+	
+	got := dictionary.Search("test")
+	want := "it is just a test"
+
+	if got != want {
+		t.Errorf("got %q want %q given, %q", got, want, "test")
+	}
+}
+
+func TestWallet(t *testing.T){
+	wallet := Wallet{}
+
+	wallet.Deposit(Bitcoin(10))
+
+	got := wallet.Balance()
+
+	fmt.Printf("Address of balance in test is %v \n", &wallet.balance)
+	want := Bitcoin(10)
+	
+	if got != want {
+		t.Errorf("got %d want %d", got, want)
+	}
+}
+
 func TestHello(t *testing.T) {
 	t.Run("saying hello to people", func(t *testing.T) {
 		got := Hello("Ehsan")

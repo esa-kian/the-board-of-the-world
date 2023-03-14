@@ -3,8 +3,13 @@ package main
 import "fmt"
 import "math"
 import "errors"
+import "bytes"
 
 const helloPrefix = "Hello, "
+
+func Greet(writer *bytes.Buffer, name string) {
+	fmt.Fprintf(writer, "Hello, %s", name)
+}
 
 const (
 	ErrNotFound   = DictionaryErr("could not find the word you were looking for")

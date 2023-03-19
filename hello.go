@@ -4,8 +4,14 @@ import "fmt"
 import "math"
 import "errors"
 import "bytes"
+import "io"
+import "os"
 
 const helloPrefix = "Hello, "
+
+func Countdown(out io.Writer) {
+	fmt.Fprint(out, "3")
+}
 
 func Greet(writer *bytes.Buffer, name string) {
 	fmt.Fprintf(writer, "Hello, %s", name)
@@ -154,10 +160,10 @@ func (t Triangle) Area() float64 {
 
 func main() {
 	//rectangle := Rectangle{12.0, 6.0}
-
+	Countdown(os.Stdout)
 //	fmt.Println(Area(rectangle))
 //	fmt.Println(Perimeter(rectangle))
-	fmt.Println(Sum([]int{4,3,6,5,9}))
-	fmt.Println(Add(5, 7))
-	fmt.Println(Hello("Ehsan and Zara"))
+//	fmt.Println(Sum([]int{4,3,6,5,9}))
+//	fmt.Println(Add(5, 7))
+//	fmt.Println(Hello("Ehsan and Zara"))
 }

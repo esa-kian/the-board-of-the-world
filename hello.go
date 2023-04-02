@@ -6,12 +6,19 @@ import "errors"
 import "bytes"
 import "io"
 import "os"
+import "time"
 
 const helloPrefix = "Hello, "
 
 func Countdown(out io.Writer) {
-	fmt.Fprint(out, "3")
+	for i := 3; i > 0; i-- {
+	
+		fmt.Fprint(out, i)
+		time.Sleep(1 * time.Second)
+	}
+	fmt.Fprint(out, "Go!")
 }
+
 
 func Greet(writer *bytes.Buffer, name string) {
 	fmt.Fprintf(writer, "Hello, %s", name)
